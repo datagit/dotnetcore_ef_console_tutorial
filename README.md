@@ -49,4 +49,7 @@ tree -I obj                                                                     
 └── readme.md
 # run docker
 docker compose up -d
+
+# access container:
+docker exec -it sqlserver-xtlab bash
 ```
