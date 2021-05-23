@@ -52,4 +52,48 @@ docker compose up -d
 
 # access container:
 docker exec -it sqlserver-xtlab bash
+
+# install packages
+# guide: https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-dotnet-cli
+dotnet restore
+
+# make DbContext
+touch Models/ProductDbContext.cs
+touch Models/Product.cs
+
+# EF Logger hiện thị SQL Query trên terminal
+dotnet add package Microsoft.Extensions.DependencyInjection
+dotnet add package Microsoft.Extensions.Logging
+dotnet add package Microsoft.Extensions.Logging.Console
+```
+
+```bash
+# Migration
+# migration: (code C#) -> (database)
+# database=webdb
+
+# make new a migration with name
+# dotnet ef migrations add [migration-name]
+dotnet ef migrations add V0
+
+# list all migration
+dotnet ef migrations list
+# 20210523054431_V0 (Pending) => not updated to DB
+
+dotnet ef migrations add V1
+dotnet ef migrations remove
+
+# update [migration-name] -> DB
+dotnet ef database update [migration-name]
+
+# drop database
+dotnet ef database drop -f
+
+dotnet ef migrations add V1
+
+# list all script query in migrations
+dotnet ef migrations script
+
+# export all script to file migrations.sql
+dotnet ef migrations script -o migrations.sql
 ```
