@@ -76,4 +76,8 @@ Table("TableName")
 [StringLength(50)] -> string -> nvarchar
 [Column("TenSanPham", TypeName = "ntext")]
 [Column(TypeName = "money")]
+[ForeignKey("CategoryId")]
+
+Reference Navigation -> Foreign Key(1 -> many)
+Collection Navigation -> (khong tao ra Foreign Key)
 ```

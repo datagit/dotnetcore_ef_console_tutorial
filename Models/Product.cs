@@ -18,7 +18,19 @@ namespace ef
     [Column(TypeName = "money")]
     public decimal Price { get; set; }
 
-    public void PrintInfo() => Console.WriteLine($"id-{ProductId} - {Name} - {Price}");
+    // make Foreign key on table Product
+    // Foreign Key
+    // Reference Navigation
+    public int? CategoryId { get; set; } // CategoryId can be null
+    // CONSTRAINT [FK_Product_Category_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([CategoryId]) ON DELETE NO ACTION
+    // public Category Category { get; set; }
+    [ForeignKey("CategoryId")]
+    public Category Category { get; set; } // FK(Product.CategoryId) -> PK(Category.CategoryId)
+
+    // public int CategoryId { get; set; } // CategoryId can be not null
+    // CONSTRAINT [FK_Product_Category_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([CategoryId]) ON DELETE NO ACTION
+
+    public void PrintInfo() => Console.WriteLine($"id-{ProductId} - {Name} - {Price}, - {CategoryId}");
   }
   /*
     https://www.devart.com/dotconnect/mysql/docs/datatypemapping.html
@@ -28,5 +40,9 @@ namespace ef
     [StringLength(50)] -> string -> nvarchar
     [Column("TenSanPham", TypeName = "ntext")]
     [Column(TypeName = "money")]
+    [ForeignKey("CategoryId")]
+
+    Reference Navigation -> Foreign Key(1 -> many)
+    Collection Navigation -> (khong tao ra Foreign Key)
   */
 }
