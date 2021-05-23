@@ -119,24 +119,61 @@ namespace dotnetcore_ef_console_tutorial
       //   Console.WriteLine("Category == null");
       // }
 
+      // using var dbcontext = new ShopContext();
+      // var category = (from c in dbcontext.categories where c.CategoryId == 2 select c).FirstOrDefault();
+
+      // // //manual load Products from Entry
+      // // var e = dbcontext.Entry(category);
+      // // e.Collection(c => c.Products).Load();
+
+      // if (category.Products != null)
+      // {
+      //   // Console.WriteLine("e.Collection(c => c.Products).Load();");
+      //   Console.WriteLine("Product is not null");
+      //   category.Products.ForEach(p => p.PrintInfo());
+      // }
+      // else
+      // {
+      //   Console.WriteLine("Product is null");
+      // }
+
       using var dbcontext = new ShopContext();
-      var category = (from c in dbcontext.categories where c.CategoryId == 2 select c).FirstOrDefault();
+      var product = dbcontext.products.Find(3); // -> find PK(3) -> ProductId=3
+      product.PrintInfo();
 
-      // //manual load Products from Entry
-      // var e = dbcontext.Entry(category);
-      // e.Collection(c => c.Products).Load();
+      // var products = from p in dbcontext.products
+      //                where p.Price >= 200
+      //                select p;
 
-      if (category.Products != null)
+      // products -> Queryable
+      // var products = (from p in dbcontext.products
+      //                 where p.Name.Contains("a")
+      //                 orderby p.Price descending
+      //                 select p).Take(2);
+
+      // // thuc su sinh ra QUYERY xuong MS SQL SERVER
+      // //products.ToList()
+
+      // products.ToList().ForEach(p => p.PrintInfo());
+
+      // var kq = from p in dbcontext.products
+      //          join c in dbcontext.categories on p.CategoryId equals c.CategoryId
+      //          select new
+      //          {
+      //            ten = p.Name,
+      //            danhMuc = c.Name,
+      //            gia = p.Price
+      //          };
+      // kq.ToList().ForEach(abc => Console.WriteLine(abc));
+
+      // RAW SQL
+      String sql = "select * from Product order by Price Desc";
+      var products = dbcontext.products.FromSqlRaw(sql);
+
+      products.ToList().ForEach(p =>
       {
-        // Console.WriteLine("e.Collection(c => c.Products).Load();");
-        Console.WriteLine("Product is not null");
-        category.Products.ForEach(p => p.PrintInfo());
-      }
-      else
-      {
-        Console.WriteLine("Product is null");
-      }
-
+        Console.WriteLine(p.Name);
+      });
     }
   }
 }

@@ -46,5 +46,7 @@ namespace ef
 
     Reference Navigation -> Foreign Key(1 -> many)
     Collection Navigation -> (khong tao ra Foreign Key)
+
+    InverseProperty
   */
 }

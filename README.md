@@ -81,6 +81,8 @@ Table("TableName")
 Reference Navigation -> Foreign Key(1 -> many)
 Collection Navigation -> (khong tao ra Foreign Key)
 
+
+InverseProperty => tu tu tiem hieu them
 ```
 Lazy load
 ```bash

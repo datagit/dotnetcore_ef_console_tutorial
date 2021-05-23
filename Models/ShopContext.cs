@@ -37,7 +37,8 @@ namespace ef
       optionsBuilder
         .UseLoggerFactory(loggerFactory)  // - Thiết lập sử Logger
         .UseSqlServer(connectionString)   // thiết lập làm việc với SqlServer
-        .UseLazyLoadingProxies() ;
+        //.UseLazyLoadingProxies() ;
+        ;
     }
   }
 }
