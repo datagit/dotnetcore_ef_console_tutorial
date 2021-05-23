@@ -91,3 +91,20 @@ Lazy load
 dotnet add package Microsoft.EntityFrameworkCore.Proxies
 
 ```
+```bash
+
+dotnet tool install --global dotnet-ef
+
+# packages
+dotnet add package System.Data.SqlClient
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.Extensions.DependencyInjection
+dotnet add package Microsoft.Extensions.Logging.Console
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Tools.DotNet
+
+# create Entities Models from database and tables
+dotnet ef dbcontext scaffold -o Entities -f -d "Data Source=localhost,1433;Initial Catalog=shopdata;User ID=SA;Password=Password123" "Microsoft.EntityFrameworkCore.SqlServer"
+```
