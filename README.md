@@ -52,4 +52,17 @@ docker compose up -d
 
 # access container:
 docker exec -it sqlserver-xtlab bash
+
+# install packages
+# guide: https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-dotnet-cli
+dotnet restore
+
+# make DbContext
+touch Models/ProductDbContext.cs
+touch Models/Product.cs
+
+# EF Logger hiện thị SQL Query trên terminal
+dotnet add package Microsoft.Extensions.DependencyInjection
+dotnet add package Microsoft.Extensions.Logging
+dotnet add package Microsoft.Extensions.Logging.Console
 ```
