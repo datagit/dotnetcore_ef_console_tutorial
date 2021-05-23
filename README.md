@@ -66,3 +66,14 @@ dotnet add package Microsoft.Extensions.DependencyInjection
 dotnet add package Microsoft.Extensions.Logging
 dotnet add package Microsoft.Extensions.Logging.Console
 ```
+
+```bash
+# branch=ef-relationship-one-many
+# https://www.devart.com/dotconnect/mysql/docs/datatypemapping.html
+Table("TableName")
+[KEY] -> Primary Key (PK)
+[Required] -> not null
+[StringLength(50)] -> string -> nvarchar
+[Column("TenSanPham", TypeName = "ntext")]
+[Column(TypeName = "money")]
+```
