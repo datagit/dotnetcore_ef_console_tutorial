@@ -16,6 +16,9 @@ namespace MigrationExamples
     [StringLength(50)]
     public string description {get; set;}
 
+    [Column(TypeName = "ntext")]
+    public string Content {get; set;}
+
     // make Foreign key on table Product
     // Foreign Key
     // Reference Navigation
