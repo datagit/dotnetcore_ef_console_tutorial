@@ -80,4 +80,12 @@ Table("TableName")
 
 Reference Navigation -> Foreign Key(1 -> many)
 Collection Navigation -> (khong tao ra Foreign Key)
+
+```
+Lazy load
+```bash
+# Bạn cũng có thể cài đặt chế độ lazy load, thuộc tính tham chiếu tự động load khi nó được truy cập. Cài vào package:
+# tien loi, nhung code RUN cham, khong khuyen kich dung cai nay(virtual)
+dotnet add package Microsoft.EntityFrameworkCore.Proxies
+
 ```

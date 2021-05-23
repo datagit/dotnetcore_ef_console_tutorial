@@ -17,6 +17,7 @@ namespace ef
 
     // Collection Navigation
     // no se khong tao field trong table
-    public List<Product> Products { get; set; }
+    // virtual -> support Lazy load by package: Microsoft.EntityFrameworkCore.Proxies
+    public virtual List<Product> Products { get; set; }
   }
 }

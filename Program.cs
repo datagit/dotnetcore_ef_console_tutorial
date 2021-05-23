@@ -123,12 +123,12 @@ namespace dotnetcore_ef_console_tutorial
       var category = (from c in dbcontext.categories where c.CategoryId == 2 select c).FirstOrDefault();
 
       // //manual load Products from Entry
-      var e = dbcontext.Entry(category);
-      e.Collection(c => c.Products).Load();
+      // var e = dbcontext.Entry(category);
+      // e.Collection(c => c.Products).Load();
 
       if (category.Products != null)
       {
-        Console.WriteLine("e.Collection(c => c.Products).Load();");
+        // Console.WriteLine("e.Collection(c => c.Products).Load();");
         Console.WriteLine("Product is not null");
         category.Products.ForEach(p => p.PrintInfo());
       }

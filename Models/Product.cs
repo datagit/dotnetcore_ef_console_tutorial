@@ -25,7 +25,9 @@ namespace ef
     // CONSTRAINT [FK_Product_Category_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([CategoryId]) ON DELETE NO ACTION
     // public Category Category { get; set; }
     [ForeignKey("CategoryId")]
-    public Category Category { get; set; } // FK(Product.CategoryId) -> PK(Category.CategoryId)
+
+    // virtual -> support Lazy load by package: Microsoft.EntityFrameworkCore.Proxies
+    public virtual Category Category { get; set; } // FK(Product.CategoryId) -> PK(Category.CategoryId)
 
     // public int CategoryId { get; set; } // CategoryId can be not null
     // CONSTRAINT [FK_Product_Category_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([CategoryId]) ON DELETE NO ACTION
