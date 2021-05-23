@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace ef
+namespace MigrationExamples
 {
   public class WebContext : DbContext
   {
@@ -20,7 +20,8 @@ namespace ef
 
     // Thuộc tính products kiểu DbSet<Product> cho biết CSDL có bảng mà
     // thông tin về bảng dữ liệu biểu diễn bởi model Product
-    public DbSet<Product> products { set; get; }
+    public DbSet<Article> articles { set; get; }
+    public DbSet<Tag> tags { set; get; }
 
     // Chuỗi kết nối tới CSDL (MS SQL Server)
     private const string connectionString = @"

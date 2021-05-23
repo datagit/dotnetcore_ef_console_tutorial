@@ -72,6 +72,20 @@ dotnet add package Microsoft.Extensions.Logging.Console
 # migration: (code C#) -> (database)
 # database=webdb
 
-# dotnet ef migrations add migration-name
+# make new a migration with name
+# dotnet ef migrations add [migration-name]
 dotnet ef migrations add V0
+
+# list all migration
+dotnet ef migrations list
+# 20210523054431_V0 (Pending) => not updated to DB
+
+dotnet ef migrations add V1
+dotnet ef migrations remove
+
+# update [migration-name] -> DB
+dotnet ef database update [migration-name]
+
+# drop database
+dotnet ef database drop -f
 ```
