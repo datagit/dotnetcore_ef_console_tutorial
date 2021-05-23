@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ef
 {
-  [Table("myproduct")]
-  public class Product
+  [Table("Article")]
+  public class Article
   {
     [Key]
-    public int ProductId {get; set;}
+    public int Id {get; set;}
 
     [Required]
     [StringLength(50)]
-    public string ProductName {get; set;}
+    public string title {get; set;}
 
     [StringLength(50)]
-    public string Provider {get; set;}
+    public string description {get; set;}
   }
 }

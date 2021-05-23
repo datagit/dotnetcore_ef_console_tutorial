@@ -66,3 +66,12 @@ dotnet add package Microsoft.Extensions.DependencyInjection
 dotnet add package Microsoft.Extensions.Logging
 dotnet add package Microsoft.Extensions.Logging.Console
 ```
+
+```bash
+# Migration
+# migration: (code C#) -> (database)
+# database=webdb
+
+# dotnet ef migrations add migration-name
+dotnet ef migrations add V0
+```

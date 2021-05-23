@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ef
 {
-  public class ProductDbContext : DbContext
+  public class WebContext : DbContext
   {
     // Tạo ILoggerFactory
     public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
@@ -25,7 +25,7 @@ namespace ef
     // Chuỗi kết nối tới CSDL (MS SQL Server)
     private const string connectionString = @"
                 Data Source=localhost,1433;
-                Initial Catalog=mydata;
+                Initial Catalog=webdb;
                 User ID=SA;Password=Password123";
 
     // Phương thức OnConfiguring gọi mỗi khi một đối tượng DbContext được tạo
