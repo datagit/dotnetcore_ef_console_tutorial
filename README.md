@@ -88,4 +88,6 @@ dotnet ef database update [migration-name]
 
 # drop database
 dotnet ef database drop -f
+
+dotnet ef migrations add V1
 ```

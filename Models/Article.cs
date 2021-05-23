@@ -11,7 +11,7 @@ namespace MigrationExamples
 
     [Required]
     [StringLength(50)]
-    public string Name {get; set;}
+    public string Title {get; set;}
 
     [StringLength(50)]
     public string description {get; set;}
