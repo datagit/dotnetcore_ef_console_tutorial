@@ -90,4 +90,10 @@ dotnet ef database update [migration-name]
 dotnet ef database drop -f
 
 dotnet ef migrations add V1
+
+# list all script query in migrations
+dotnet ef migrations script
+
+# export all script to file migrations.sql
+dotnet ef migrations script -o migrations.sql
 ```

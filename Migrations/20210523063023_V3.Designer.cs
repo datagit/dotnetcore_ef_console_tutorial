@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MigrationExamples;
 
 namespace dotnetcore_ef_console_tutorial.Migrations
 {
     [DbContext(typeof(WebContext))]
-    partial class WebContextModelSnapshot : ModelSnapshot
+    [Migration("20210523063023_V3")]
+    partial class V3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,10 +57,10 @@ namespace dotnetcore_ef_console_tutorial.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ArticleId")
+                    b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TagId")
+                    b.Property<int>("TagId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -66,8 +68,7 @@ namespace dotnetcore_ef_console_tutorial.Migrations
                     b.HasIndex("TagId");
 
                     b.HasIndex("ArticleId", "TagId")
-                        .IsUnique()
-                        .HasFilter("[ArticleId] IS NOT NULL AND [TagId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("ArticleTags");
                 });
@@ -102,11 +103,15 @@ namespace dotnetcore_ef_console_tutorial.Migrations
                 {
                     b.HasOne("MigrationExamples.Article", "Article")
                         .WithMany()
-                        .HasForeignKey("ArticleId");
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MigrationExamples.Tag", "Tag")
                         .WithMany()
-                        .HasForeignKey("TagId");
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Article");
 
